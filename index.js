@@ -10,7 +10,7 @@ const path = require("path");
 
 const app=express() //here we are assigning the methods in express to app variable
 
-const PORT= 4000;//creating the port number as 4000
+const PORT= process.env.PORT || 4000;//creating the port number as 4000
 
 dotenv.config()//this is to help to axis info in the .env file
 app.use(cors());
@@ -26,7 +26,7 @@ app.use('/product',productRoutes);
 //based on server creating a router 
 app.use('/uploads', express.static('uploads'));
 
-app.use('/home' ,(req,res)=>{
+app.use('/' ,(req,res)=>{
     res.send("<h1>Welcome to SAMII");
 })
 
