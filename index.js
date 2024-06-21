@@ -8,17 +8,18 @@ const productRoutes = require("./routes/ProductRoutes");
 const cors = require("cors")
 const path = require("path");
 
+
 const app=express() //here we are assigning the methods in express to app variable
 
 const PORT= process.env.PORT || 4000;//creating the port number as 4000
 
 dotenv.config()//this is to help to axis info in the .env file
-app.use(cors());
 
 mongoose.connect(process.env.mongo_url)//this will help to connect mongoo_url
 .then(()=>console.log("Mongodb connected sucessfully"))//this is a promiss
 .catch((error)=>console.log(error))
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/vendor',venderRoutes );//middleware to create http request
 app.use('/firm',firmRoutes);
